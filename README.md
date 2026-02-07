@@ -62,15 +62,26 @@ This project focuses on building a responsive, user-friendly frontend while impl
 FoodieHub/
 │
 ├── public/
+│   └── Favicon.jpg          # App favicon
 │
 ├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Main app pages
-│   ├── data/           # Food items data
-│   ├── App.jsx
-│   └── index.js
+│   ├── Components/          # Reusable UI components
+│   ├── Context/             # React Context for global state
+│   ├── redux/               # Redux store, slices, reducers
+│   ├── assets/              # Images and static assets
+│   │
+│   ├── App.jsx              # Main app component
+│   ├── App.css              # App styles
+│   ├── index.css            # Global styles
+│   └── main.jsx             # Application entry point
 │
-└── package.json
+├── food.js                  # Food items data
+├── index.html               # Root HTML file
+├── package.json             # Dependencies & scripts
+├── package-lock.json
+├── eslint.config.js
+└── README.md
+
 
 ```
 
