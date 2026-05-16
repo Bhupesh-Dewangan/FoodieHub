@@ -5,10 +5,14 @@ import { FilterContext } from "../Context/FilterContext.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import OrderCard from "./OrderCard.jsx";
 import BillPrint from "./BillPrint.jsx";
+import { useNavigate } from "react-router-dom";
+import { EmptyCart } from "../redux/cartSlice.js";
 
 function CartCard() {
   let { setShowCards, showCards } = useContext(FilterContext);
   let items = useSelector((state) => state.cart);
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   let subtotal = items.reduce((total, item) => total + item.qty * item.price, 0);
   let deliveryFee = subtotal > 0 ? 20 : 0;
@@ -26,6 +30,12 @@ function CartCard() {
       document.body.style.overflow = "unset";
     };
   }, [showCards]);
+
+  const handleCheckout = () => {
+    dispatch(EmptyCart());
+    setShowCards(false);
+    navigate('/success');
+  };
 
   return (
     <>
@@ -93,7 +103,10 @@ function CartCard() {
               taxes={taxes}
               total={total}
             />
-            <button className="w-full mt-4 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white rounded-xl text-lg font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
+            <button 
+              onClick={handleCheckout}
+              className="w-full mt-4 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white rounded-xl text-lg font-bold shadow-md hover:shadow-lg transition-all active:scale-95"
+            >
               Proceed to Checkout
             </button>
           </div>
