@@ -49,10 +49,10 @@ function Nav() {
 
       {/* Cart Icon */}
       <div
-        className="w-[60px] h-[60px] flex items-center justify-center rounded-xl relative transition-all duration-300 cursor-pointer hover:shadow-md hover:-translate-y-1 group"
+        className="w-[60px] h-[60px] flex items-center justify-center rounded-xl relative transition-all duration-300 cursor-pointer  hover:-translate-y-1 group"
         onClick={() => setShowCards(true)}
       >
-        <FaCartPlus className="w-[28px] h-[28px] text-white group-hover:text-[var(--color-primary)] transition-colors" />
+        <FaCartPlus className="w-[28px] h-[28px] text-slate-500 group-hover:text-[var(--color-primary)] transition-colors" />
 
         {items.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-[var(--color-primary)] text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow-md animate-bounce">

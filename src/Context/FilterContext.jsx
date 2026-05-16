@@ -9,6 +9,8 @@ export function FilterProvider({ children }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [showCards, setShowCards] = useState(false);
 
+  const [activeCategory, setActiveCategory] = useState("All");
+
   const data = {
     searchTerm,
     setSearchTerm,
@@ -17,11 +19,11 @@ export function FilterProvider({ children }) {
     filterByCategory,
     showCards,
     setShowCards,
+    activeCategory,
   };
 
-  // const [activeCategory, setActiveCategory] = useState("All");
-
   function filterByCategory(category) {
+    setActiveCategory(category);
     if (category === "All") {
       setFilteredItems(food_items);
     } else {

@@ -39,7 +39,7 @@ function Home() {
         <CardContainer />
       </div>
 
-      {/* <CartCard /> */}
+      <CartCard />
     </div>
   );
 }

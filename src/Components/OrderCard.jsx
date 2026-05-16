@@ -1,58 +1,61 @@
 import React from "react";
-import CartCard from "./CartCard";
-import { useDispatch, useSelector } from "react-redux";
-import { AddItem, IncrementQty } from "../redux/cartSlice.js";
-import { RemoveItem } from "../redux/cartSlice.js";
+import { useDispatch } from "react-redux";
+import { AddItem, IncrementQty, DecrementQty, RemoveItem } from "../redux/cartSlice.js";
 import { ImBin } from "react-icons/im";
-import { BiLogoLess } from "react-icons/bi";
-import BillPrint from "./BillPrint.jsx";
-import { DecrementQty } from "../redux/cartSlice.js";
 
 function OrderCard({ name, price, type, image, id, qty }) {
   let dispatch = useDispatch();
-  let items = useSelector((state) => state.cart);
 
   return (
-    <div className="w-full h-[150px] shadow-md border-t-2 border-green-500 flex bg-white rounded-lg overflow-hidden mb-2">
-      <div className="w-[70%] h-full p-2 flex gap-3">
-        <div className="w-[50%] h-full overflow-hidden rounded-md flex-shrink-0">
-          <img src={image} alt="" className="w-full h-full object-cover" />
+    <div className="w-full bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex gap-4 items-center group hover:shadow-md transition-all">
+      {/* Image */}
+      <div className="w-[80px] h-[80px] rounded-lg overflow-hidden flex-shrink-0 bg-gray-50">
+        <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+      </div>
+
+      {/* Details */}
+      <div className="flex-1 flex flex-col justify-between py-1">
+        <div className="flex justify-between items-start">
+          <div className="text-[16px] font-bold text-gray-800 leading-tight pr-2 line-clamp-2">
+            {name}
+          </div>
+          <button
+            className="text-gray-400 hover:text-red-500 transition-colors p-1"
+            onClick={() => dispatch(RemoveItem(id))}
+            title="Remove item"
+          >
+            <ImBin className="w-[16px] h-[16px]" />
+          </button>
         </div>
 
-        <div className="flex flex-col justify-between items-center w-[50%] pt-[5px] pb-[15px]">
-          <div className="text-[18px] font-semibold ">{name}</div>
-          <div className="flex border border-green-500 rounded-md overflow-hidden h-[40px] w-[80%] ">
-            <button className="w-[30%] h-full flex items-center justify-center text-lg font-semibold text-black hover:bg-green-100 transition-colors"
-            onClick={() => dispatch(DecrementQty(id))}>
+        <div className="flex justify-between items-end mt-2">
+          {/* Price & Type */}
+          <div>
+            <div className="font-bold text-gray-900">₹{price}</div>
+            <div className={`text-[11px] font-bold uppercase tracking-wider ${type === "veg" ? "text-green-600" : "text-red-500"}`}>
+              {type}
+            </div>
+          </div>
+
+          {/* Quantity Controls */}
+          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg h-[32px] overflow-hidden">
+            <button 
+              className="w-[32px] h-full flex items-center justify-center text-lg text-gray-600 hover:bg-gray-200 transition-colors active:bg-gray-300"
+              onClick={() => dispatch(DecrementQty(id))}
+            >
               -
             </button>
-            <span className="w-[40%] h-full bg-green-500 text-white flex items-center justify-center text-lg font-semibold">
+            <span className="w-[32px] h-full flex items-center justify-center text-sm font-bold text-gray-800 bg-white">
               {qty}
             </span>
-            <button className="w-[30%] h-full flex items-center justify-center text-lg font-semibold text-black hover:bg-green-100 transition-colors"
-            onClick={() => dispatch(IncrementQty(id))}>
+            <button 
+              className="w-[32px] h-full flex items-center justify-center text-lg text-gray-600 hover:bg-gray-200 transition-colors active:bg-gray-300"
+              onClick={() => dispatch(IncrementQty(id))}
+            >
               +
             </button>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-end w-[30%] h-full pr-[20px] bg-white rounded-md justify-around">
-        <span className="text-xl font-semibold text-gray-800">
-          Rs. {price}/-
-        </span>
-        <span
-          className={`text-lg font-medium ${
-            type === "veg" ? " text-green-600" : "text-red-600"
-          }`}
-        >
-          {type}
-        </span>
-        <button
-          className="text-red-600 hover:text-red-800 transition-colors duration-200 cursor-pointer"
-          onClick={() => dispatch(RemoveItem(id))}
-        >
-          <ImBin className="w-[25px] h-[25px]" />
-        </button>
       </div>
     </div>
   );

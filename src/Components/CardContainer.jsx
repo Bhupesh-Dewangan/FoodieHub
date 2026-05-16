@@ -9,19 +9,19 @@ function CardContainer() {
   if (!filter.filteredItems || filter.filteredItems.length === 0) {
     return (
       <div className="w-full flex justify-center items-center mt-10">
-        <div className="w-full h-dvh text-center">
-          <div className=" text-2xl text-gray-500 mb-2">
+        <div className="w-full py-20 text-center bg-white rounded-3xl shadow-sm border border-gray-100">
+          <div className="text-3xl font-bold text-gray-800 mb-3">
             No items found
           </div>
-          <div className="text-lg text-gray-400">
-            Try selecting a different category
+          <div className="text-lg text-gray-500">
+            Try selecting a different category or change your search term.
           </div>
         </div>
       </div>
     );
   }
   return (
-    <div className="w-full flex flex-wrap justify-center items-center mt-5 pb-10 gap-2">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center mt-5 pb-10">
       {filter.filteredItems.map((item) => (
         <Card
           key={item.id}

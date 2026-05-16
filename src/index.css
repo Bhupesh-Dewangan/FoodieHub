@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+:root {
+  --font-sans: "Outfit", sans-serif;
+  --color-primary: #e23744;
+  --color-primary-hover: #c9303d;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

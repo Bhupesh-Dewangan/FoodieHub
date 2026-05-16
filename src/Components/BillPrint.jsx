@@ -1,39 +1,29 @@
 import React from "react";
-import { toast } from "react-toastify";
 
 function BillPrint({ subtotal, deliveryFee, taxes, total }) {
   return (
-    <div className="w-full flex flex-col justify-center items-center">
-      <div className="w-full h-[150px] mt-3 border-t-1 border-b-1 p-2 flex flex-col gap-4 text-lg">
-        <div className="flex justify-between items-center px-[30px] ">
-          <div className="font-semibold">Subtotal</div>
-          <div className="font-semibold">Rs.{subtotal}/-</div>
-        </div>
-
-        <div className="flex justify-between items-center px-[30px] ">
-          <div className="font-semibold">Delivery Fee</div>
-          <div className="font-semibold">Rs.{deliveryFee}/-</div>
-        </div>
-
-        <div className="flex justify-between items-center px-[30px] ">
-          <div className="font-semibold">Taxes</div>
-          <div className="font-semibold">Rs.{taxes}/-</div>
-        </div>
+    <div className="w-full flex flex-col gap-3">
+      <div className="flex justify-between items-center text-sm text-gray-600">
+        <span>Subtotal</span>
+        <span className="font-semibold text-gray-800">₹{subtotal}</span>
       </div>
 
-      <div className="w-full h-[50px] mt-1 border-b-1 p-2 flex flex-col gap-4 text-lg">
-        <div className="flex justify-between items-center px-[30px] ">
-          <div className="font-semibold">Total</div>
-          <div className="font-semibold">Rs.{total}/-</div>
-        </div>
+      <div className="flex justify-between items-center text-sm text-gray-600">
+        <span>Delivery Fee</span>
+        <span className="font-semibold text-gray-800">₹{deliveryFee}</span>
       </div>
 
-      <button
-        className="w-[85%] bg-amber-300 border-1 p-3 font-semibold mt-3 rounded-lg hover:bg-amber-400"
-        onClick={()=> toast.success("Order Placed Successfully....")}
-      >
-        Place Order
-      </button>
+      <div className="flex justify-between items-center text-sm text-gray-600">
+        <span>Taxes</span>
+        <span className="font-semibold text-gray-800">₹{taxes}</span>
+      </div>
+
+      <div className="w-full h-[1px] bg-gray-200 my-1"></div>
+
+      <div className="flex justify-between items-center text-lg font-bold text-gray-900">
+        <span>Total</span>
+        <span>₹{total}</span>
+      </div>
     </div>
   );
 }
