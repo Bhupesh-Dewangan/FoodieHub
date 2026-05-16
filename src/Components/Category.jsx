@@ -5,18 +5,29 @@ import { FilterContext } from "../Context/FilterContext";
 
 function Category() {
   const filter = useContext(FilterContext);
+
   return (
-    <div className="w-full h-[100px] flex justify-center items-center gap-7 mt-3">
-      {CategoryList.map((item) => (
-        <div
-          key={item.name}
-          className="w-[80px] h-[80px] bg-white flex justify-center items-center flex-col rounded-md shadow-md text-[15px] gap-0.5 cursor-pointer hover:scale-110 duration-300"
-          onClick={() => filter.filterByCategory(item.name)}
-        >
-          {item.icon}
-          {item.name}
-        </div>
-      ))}
+    <div className="w-full flex flex-wrap justify-center items-center gap-4 mt-6 mb-10 px-4">
+      {CategoryList.map((item) => {
+        const isActive = filter.activeCategory === item.name;
+        return (
+          <button
+            key={item.name}
+            className={`
+              flex items-center gap-2 px-6 py-3 rounded-full text-[16px] font-semibold transition-all duration-300 shadow-sm hover:shadow-md
+              ${isActive 
+                ? "bg-[var(--color-primary)] text-white scale-105" 
+                : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-100 hover:scale-105"}
+            `}
+            onClick={() => filter.filterByCategory(item.name)}
+          >
+            <span className={`text-2xl ${isActive ? "text-white" : "text-[var(--color-primary)]"}`}>
+              {item.icon}
+            </span>
+            {item.name}
+          </button>
+        );
+      })}
     </div>
   );
 }

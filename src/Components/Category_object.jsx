@@ -10,43 +10,43 @@ const CategoryList = [
   {
     id: 1,
     name: "All",
-    icon: <TiThSmallOutline className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <TiThSmallOutline />,
   },
 
   {
     id: 2,
     name: "Breakfast",
-    icon: <MdOutlineFreeBreakfast className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <MdOutlineFreeBreakfast />,
   },
 
   {
     id: 3,
     name: "Soups",
-    icon: <TbSoupFilled className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <TbSoupFilled />,
   },
 
   {
     id: 4,
     name: "Pasta",
-    icon: <CiBowlNoodles className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <CiBowlNoodles />,
   },
 
   {
     id: 5,
     name: "Main",
-    icon: <MdDinnerDining className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <MdDinnerDining />,
   },
 
   {
     id: 6,
     name: "Pizza",
-    icon: <GiFullPizza className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <GiFullPizza />,
   },
 
   {
     id: 7,
     name: "Burger",
-    icon: <GiHamburger className="w-[45px] h-[45px] text-green-500"/>,
+    icon: <GiHamburger />,
   },
 ];
 export default CategoryList;
